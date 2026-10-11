@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf3ff">
+  <title>Weatherly — Weather Dashboard</title>
+  <meta name="description" content="A simple weather dashboard with live weather and forecasts for searchable locations.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Weatherly home">
+        <span class="brand-mark" aria-hidden="true">☀</span>
+        <span>weatherly</span>
+      </a>
+      <div class="top-note"><span class="live-dot"></span> Live weather</div>
+    </header>
+
+    <section class="search-section" aria-labelledby="page-title">
+      <p class="eyebrow">YOUR WEATHER, AT A GLANCE</p>
+      <h1 id="page-title">Find your kind of weather.</h1>
+      <p class="intro">Search for a city, district, town, or another available location.</p>
+      <form id="search-form" class="search-form" autocomplete="off">
+        <label class="sr-only" for="location-search">Search location</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="location-search" type="search" placeholder="Try Indore, Bhopal, Jaipur…" aria-controls="search-results" aria-autocomplete="list" required>
+        <button id="search-button" type="submit">Search</button>
+        <div id="search-results" class="search-results" role="listbox" aria-label="Location search results" hidden></div>
+      </form>
+      <p class="search-hint">Tip: include the state name for more accurate results, e.g. “Sehore, Madhya Pradesh”.</p>
+      <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="weather-panel" class="weather-panel theme-cloudy" aria-label="Current weather" hidden>
+      <div class="weather-main-card">
+        <div class="weather-heading">
+          <div>
+            <p class="eyebrow card-eyebrow">CURRENT WEATHER</p>
+            <h2 id="place-name">Loading location…</h2>
+            <p id="place-meta" class="place-meta"></p>
+            <p id="updated-at" class="updated-at"></p>
+          </div>
+          <button id="refresh-button" class="icon-button" type="button" aria-label="Refresh weather" title="Refresh weather">↻</button>
+        </div>
+        <div class="current-weather">
+          <div>
+            <div class="temperature"><span id="temperature">--</span><span class="degree">°C</span></div>
+            <p id="condition" class="condition">Getting current conditions…</p>
+            <p class="feels-like">Feels like <strong id="feels-like">--°</strong></p>
+          </div>
+          <div id="weather-illustration" class="weather-illustration" aria-hidden="true">⛅</div>
+        </div>
+        <div class="weather-stats">
+          <article class="stat-card">
+            <span class="stat-icon" aria-hidden="true">💧</span>
+            <div><p>Humidity</p><strong id="humidity">--%</strong></div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon" aria-hidden="true">🌬️</span>
+            <div><p>Wind speed</p><strong id="wind-speed">-- km/h</strong></div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon" aria-hidden="true">🌧️</span>
+            <div><p>Rain chance</p><strong id="rain-chance">--%</strong></div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon" aria-hidden="true">☀️</span>
+            <div><p>UV index</p><strong id="uv-index">--</strong></div>
+          </article>
+        </div>
+      </div>
+
+      <section class="forecast-card" aria-labelledby="hourly-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE NEXT HOURS</p><h3 id="hourly-title">Hourly forecast</h3></div>
+          <span class="section-chip">Next 24 hours</span>
+        </div>
+        <div id="hourly-forecast" class="hourly-list">
+          <p class="muted">Loading hourly forecast…</p>
+        </div>
+      </section>
+
+      <section class="forecast-card" aria-labelledby="daily-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">PLAN AHEAD</p><h3 id="daily-title">7-day forecast</h3></div>
+          <span class="section-chip">Daily outlook</span>
+        </div>
+        <div id="daily-forecast" class="daily-list">
+          <p class="muted">Loading daily forecast…</p>
+        </div>
+      </section>
+
+      <p class="data-note">Weather data provided by Open-Meteo. Forecasts are estimates and may differ from local conditions.</p>
+    </section>
+
+    <section id="empty-state" class="empty-state">
+      <div class="empty-icon" aria-hidden="true">🌤️</div>
+      <h2>Your forecast starts here</h2>
+      <p>Search for a location to see current conditions and the forecast.</p>
+      <div class="quick-cities" aria-label="Popular Indian locations">
+        <button type="button" class="city-chip" data-city="Bhopal">Bhopal</button>
+        <button type="button" class="city-chip" data-city="Indore">Indore</button>
+        <button type="button" class="city-chip" data-city="Mumbai">Mumbai</button>
+        <button type="button" class="city-chip" data-city="New Delhi">New Delhi</button>
+        <button type="button" class="city-chip" data-city="Bengaluru">Bengaluru</button>
+        <button type="button" class="city-chip" data-city="Chennai">Chennai</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Made for clear skies and curious minds.</span>
+      <span>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span>
+    </footer>
+  </main>
+
+  <noscript><p class="noscript">This dashboard needs JavaScript enabled to fetch live weather data.</p></noscript>
+</body>
+</html>
